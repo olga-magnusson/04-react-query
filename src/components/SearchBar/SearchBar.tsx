@@ -7,7 +7,7 @@ interface SearchBarProps{
 }
 
 export default function SearchBar({onSubmit }: SearchBarProps){
-    const handleSubmite = (formData: FormData) => {
+    const handleSubmit = (formData: FormData) => {
         const query = formData.get('query')?.toString().trim();
       
         if (!query) {
@@ -21,10 +21,10 @@ export default function SearchBar({onSubmit }: SearchBarProps){
       return(
         <header className={css.header}>
             <div className={css.container}>
-                <a className={css.link} href="www.themoviedb.org" target="_blank" rel="noopener noreferrer">
+                <a className={css.link} href="http://www.themoviedb.org" target="_blank" rel="noopener noreferrer">
                     Powered by TMDB
                 </a>
-                <form className={css.form} action={handleSubmite}>
+                <form className={css.form} action={handleSubmit}>
                     <input 
                     className={css.input}
                     type="text"

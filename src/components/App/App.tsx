@@ -1,5 +1,5 @@
 import css from './App.module.css';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import toast, {Toaster} from 'react-hot-toast';
 import SearchBar from '../SearchBar/SearchBar';
 import MovieGrid from '../MovieGrid/MovieGrid';
@@ -36,9 +36,15 @@ export default function App() {
       setPage(1);
     };
 
-   if (query && !isLoading && movies.length === 0){
-    toast.error('No movies found for your request.');
-   } 
+    useEffect(() => {
+        if (!query || !data) return;
+      
+        if (data.results.length === 0) {
+          toast.error('No movies found for your request.');
+        }
+      }, [query, data]);
+      
+      
 
    return (
     <div className={css.app}>
